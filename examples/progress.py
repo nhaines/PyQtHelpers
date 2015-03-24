@@ -1,5 +1,10 @@
 __author__ = 'nhaines'
 
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+
+
 from PyQtHelpers import app, delegates
 from PyQt4 import QtCore
 from PyQt4 import QtGui
@@ -44,7 +49,7 @@ if __name__ == "__main__":
 
     delegate = delegates.ColorfulProgressDelegate(progress_role=model.PROGRESS_ROLE, total_role=model.TOTAL_ROLE,
                                                   opacity=0.5)
-    delegate.animate = False
+    # delegate.animate = False
 
     view = QtGui.QListView()
     view.setModel(model)
