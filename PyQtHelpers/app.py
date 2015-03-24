@@ -41,7 +41,10 @@ class HttpClientApp(BaseApp):
 
 
 class HttpServerApp(BaseApp):
-    def __init__(self, argv=[], organization="PyQtHelpers", name="Default", port=80):
+    def __init__(self, argv=[], organization="PyQtHelpers", name="Default", port=8080):
         self.server = network.HttpServer()
         super(HttpServerApp, self).__init__(argv, organization, name)
-        self.server.listen(port=port)
+        self.server.listen(QtNetwork.QHostAddress.LocalHost, port=port)
+
+    def onExit(self):
+        self.server.close()
